@@ -11,6 +11,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.red,
       ),
       home: MyHomePage(),
+      debugShowCheckedModeBanner: false,
     );
   }
 }
@@ -21,9 +22,44 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  var num1, num2, result;
   
   //TODO1: Define TextEditingController and set text to "0"
+  final TextEditingController t1 = TextEditingController(text: "0");
+  final TextEditingController t2 = TextEditingController(text: "0");
+
   //TODO2: Define the operations
+  void doAddition() {
+    setState(() {
+      num1 = int.parse(t1.text);
+      num2 = int.parse(t2.text);
+      result = num1 + num2;
+    });
+  }
+
+  void doSubtraction() {
+    setState(() {
+      num1 = int.parse(t1.text);
+      num2 = int.parse(t2.text);
+      result = num1 - num2;
+    });
+  }
+
+  void doMultiplication() {
+    setState(() {
+      num1 = int.parse(t1.text);
+      num2 = int.parse(t2.text);
+      result = num1 * num2;
+    });
+  }
+
+  void doDivision() {
+    setState(() {
+      num1 = int.parse(t1.text);
+      num2 = int.parse(t2.text);
+      result = num1 / num2;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +73,7 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Text(
-              "Output : ",
+              "Output : $result",
               style: TextStyle(
                 color: Colors.purple, 
                 fontSize: 26.0,
@@ -53,6 +89,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 hintText: "Enter number 1",
                 ),
                 //TODO3: Add controller
+                controller: t1,
             ),
             Padding(
               padding: EdgeInsets.only(top: 10.0),
@@ -62,9 +99,10 @@ class _MyHomePageState extends State<MyHomePage> {
               decoration: InputDecoration(
                 hintText: "Enter number 2",
               ),
+              controller: t2,
             ),
             Padding(
-              padding: EdgeInsets.only(top: 40.0),
+              padding: EdgeInsets.only(top: 30.0),
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -72,12 +110,12 @@ class _MyHomePageState extends State<MyHomePage> {
                 MaterialButton(
                   child: Text("+"),
                   color: Colors.greenAccent,
-                  onPressed: (){},
+                  onPressed: doAddition,
                 ),
                 MaterialButton(
                   child: Text("-"),
                   color: Colors.greenAccent,
-                  onPressed: (){},
+                  onPressed: doSubtraction,
                 ),
               ],
             ),
@@ -87,12 +125,12 @@ class _MyHomePageState extends State<MyHomePage> {
                 MaterialButton(
                   child: Text("*"),
                   color: Colors.greenAccent,
-                  onPressed: (){},
+                  onPressed: doMultiplication,
                 ),
                 MaterialButton(
                   child: Text("/"),
                   color: Colors.greenAccent,
-                  onPressed: (){},
+                  onPressed: doDivision,
                 ),
               ],
             )
