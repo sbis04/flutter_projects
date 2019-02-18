@@ -1,0 +1,17 @@
+[
+    {
+        "name" : "n1",
+        "age" : "21",
+        "gender" : "male"
+    },
+    {
+        "name" : "n2",
+        "age" : "23",
+        "gender" : "female"
+    },
+    {
+        "name" : "n3",
+        "age" : "48",
+        "gender" : "male"
+    }
+]
